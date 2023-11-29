@@ -2,10 +2,12 @@ version: '3'
 services:
 
   app:
-    image: samyrmmb/app_node_desafio
+    image: node:15
     container_name: app
     working_dir: /app
     tty: true
+    volumes:
+      - ./app:/app
     environment:
       DB_HOST: mysql
       DB_PORT: 3306
@@ -14,15 +16,17 @@ services:
       DB_NAME: fullcycle
     networks:
       - node-network
-#    command: npm start
+    command: npm start
 
 
   db:
-    image: samyrmmb/db_node_desafio
-#    command: --innodb-use-native-aio=0
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
     container_name: db
     restart: always
     tty: true
+    volumes:
+      - ./mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: fullcycle
