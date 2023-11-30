@@ -1,7 +1,6 @@
 FROM node:15
-#    container_name: app
+
 WORKDIR /app
-#    tty: true
 
 COPY ./app /app
 
@@ -11,6 +10,4 @@ ENV DB_HOST="mysql" \
     DB_PASSWORD="fullcycle_password" \
     DB_NAME="fullcycle"
 
-#    networks:
-#      - node-network
 CMD ["npm", "start"]
