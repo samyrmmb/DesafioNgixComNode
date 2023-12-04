@@ -1,13 +1,6 @@
-FROM node:15
+FROM node:18
+
+USER node
 
 WORKDIR /app
 
-COPY ./app /app
-
-ENV DB_HOST="mysql" \
-    DB_PORT="3306" \
-    DB_USER="fullcycle" \
-    DB_PASSWORD="fullcycle_password" \
-    DB_NAME="fullcycle"
-
-CMD ["npm", "start"]
